@@ -1,0 +1,638 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Roboto:wght@300;400&display=swap');
+
+:root {
+  --clr-placeholder-900: #000000a4;
+  --clr-scrollbar-200: #7e7e7e70;
+  --clr-hoverBg-501: #0e131f;
+
+  --clr-primary-500: #283845;
+  --clr-primary-600: #202c39;
+
+  --clr-neutral-250: #b5bad0;
+  /* --clr-neutral-250: #81D2C7; */
+  /* --clr-neutral-250: #f2d492; */
+
+  --clr-neutral-200: #e0e0e2;
+  /* --clr-neutral-400: #f29559; */
+  --clr-neutral-400: #81d2c7;
+
+  --ff-primary: 'Roboto', sans-serif;
+  --ff-accent: 'Playfair Display', serif;
+}
+
+/* ==================
+
+   Global Styles 
+
+   ================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--clr-scrollbar-200);
+  border-radius: 5px 0 0 5px;
+  /* border-radius: 0.3rem; */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-neutral-400);
+}
+
+body {
+  background-color: var(--clr-primary-600);
+  font-family: var(--ff-primary);
+  font-weight: 400;
+  font-size: 1.3125rem;
+  line-height: 1.6;
+}
+
+/* ==================
+
+   Typography 
+
+   ================== */
+
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--ff-accent);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--clr-neutral-250);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+p {
+  font-size: 1.5rem;
+  color: var(--clr-neutral-200);
+}
+
+a {
+  font-size: 1.5rem;
+  color: var(--clr-neutral-200);
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+/* ==================
+
+   Layout
+
+   ================== */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* ==================
+
+   Navigation bar 
+
+   ================== */
+
+.navbar {
+  background-color: var(--clr-primary-500);
+  display: flex;
+  flex-direction: column;
+}
+
+.navbarTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbarTop h1 {
+  color: var(--clr-neutral-250);
+  padding-left: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.navbarTop a:focus-visible {
+  outline: none;
+  border-top: 3px solid var(--clr-neutral-400);
+}
+
+.navbarTop .hamburgerButton {
+  margin-top: 0.6rem;
+  margin-right: 0.4rem;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  display: flex;
+  align-items: center;
+  color: var(--clr-neutral-200);
+}
+
+.navbarTop .hamburgerButton:hover {
+  color: var(--clr-neutral-400);
+}
+
+.navbarBottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbarBottom a:focus-visible {
+  outline: none;
+  color: var(--clr-neutral-400);
+  border-top: 3px solid var(--clr-neutral-400);
+}
+
+.navbarBottom a:hover {
+  text-decoration: none;
+  color: var(--clr-neutral-400);
+  border-top: 3px solid var(--clr-neutral-400);
+}
+
+/* Every nav child */
+.navbarBottom > * + * {
+  margin-top: 1.5rem;
+}
+
+.linksHidden {
+  display: none;
+}
+
+.navbar .splitLine {
+  background-color: var(--clr-neutral-200);
+  width: 100%;
+  height: 1px;
+  border: none;
+}
+
+.splitLineHidden {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    min-height: 4rem;
+    background-color: var(--clr-primary-500);
+    display: grid;
+    grid-template-columns: 0.3fr auto 2fr 1fr 1fr;
+  }
+
+  .navbarTop {
+    grid-column: 2 / span 1;
+    display: flex;
+    align-items: center;
+    color: var(--clr-neutral-250);
+  }
+
+  .navbarTop h1 {
+    color: var(--clr-neutral-250);
+    padding-left: 0rem;
+    margin-top: 0rem;
+  }
+
+  .navbarTop .hamburgerButton {
+    display: none;
+  }
+
+  .navbar .splitLine {
+    display: none;
+  }
+
+  .navbarBottom {
+    grid-column: 4 / 5;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbarBottom > * {
+    margin-top: 0rem;
+  }
+
+  /* Select the next siblings of navbarListItem (can also do .navbarListItems > * + * */
+  .navbarBottom > * + * {
+    margin-left: 1.5rem;
+  }
+
+  /* turns out it works without adding this to media query
+  .linksHidden {
+    display: flex;
+  } */
+}
+
+/* ==================
+
+   Main Content 
+   
+   ================== */
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  margin: 3rem auto;
+  width: 90%;
+  max-width: 70.5rem;
+  display: flex;
+  flex-direction: column;
+  /* background-color: var(--clr-primary-500);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px; */
+}
+
+.card {
+  border-radius: 5px;
+  border: 4px solid var(--clr-neutral-200);
+  color: var(--clr-neutral-200);
+  padding: 0.25em 1em;
+  width: 95%;
+  font-size: 1.2rem;
+}
+
+.button {
+  background: transparent;
+  border-radius: 5px;
+  border: 4px solid var(--clr-neutral-200);
+  color: var(--clr-neutral-200);
+  padding: 0.25em 0.75em;
+  font-size: 1.2rem;
+}
+
+.button:hover {
+  border: 4px solid var(--clr-neutral-400);
+  color: var(--clr-neutral-400);
+  background-color: var(--clr-hoverBg-501);
+  cursor: pointer;
+}
+
+.button:focus-visible {
+  outline: none;
+  border: 4px solid var(--clr-neutral-400);
+  color: var(--clr-neutral-400);
+  background-color: var(--clr-hoverBg-501);
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 80%;
+    font-size: 1.8rem;
+  }
+  .button {
+    font-size: 2rem;
+  }
+}
+
+/* ------------------
+
+   Utility Classes 
+   
+   ------------------ */
+
+.alignCenter {
+  align-items: center;
+}
+
+.justifyCenter {
+  justify-content: center;
+}
+
+/* .iconScaling {
+} */
+
+.overflowAuto {
+  overflow: auto;
+}
+
+/* ------------------
+
+   Home page 
+   
+   ------------------ */
+
+.loadingIcon {
+  animation: rotation 2.8s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ------------------
+
+   GameSearch component 
+   
+   ------------------ */
+
+.homeForm {
+  display: flex;
+  justify-content: center;
+  margin-top: 0rem;
+  /* margin-bottom: 3rem; */
+  width: 95%;
+}
+
+.searchbar {
+  width: 100%;
+  height: 2.5rem;
+  font-size: 1.2rem;
+  background-color: var(--clr-neutral-200);
+
+  border-radius: 5px;
+  border: 4px solid var(--clr-neutral-200);
+  color: var(--clr-primary-600);
+
+  padding: 0.25em 1em;
+}
+
+.searchbar:focus::placeholder {
+  color: transparent;
+}
+
+.searchbar:focus {
+  outline: none;
+  border-left-color: var(--clr-neutral-250);
+  border-left-width: 8px;
+}
+
+.searchbar::placeholder {
+  color: var(--clr-placeholder-900);
+}
+
+.searchbarButton {
+  display: none;
+}
+
+/* ------------------
+
+   GamesList component 
+   
+   ------------------ */
+
+.gamesList {
+  padding: 0em 0em;
+  margin-top: 3rem;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.gameItem {
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.gameItem:nth-child(odd) {
+  background-color: var(--clr-primary-500);
+}
+
+.gameItem:hover {
+  background-color: var(--clr-hoverBg-501);
+  color: var(--clr-neutral-400);
+  border-radius: 5px;
+}
+
+.gameItem:focus {
+  outline: none;
+  background-color: var(--clr-hoverBg-501);
+  color: var(--clr-neutral-400);
+  border-radius: 5px;
+}
+
+/* ------------------
+
+   RandomGame component 
+   
+   ------------------ */
+
+.randomiseButton {
+  height: 4rem;
+  margin-top: 6rem;
+}
+
+/* ------------------
+
+   Game Page 
+   
+   ------------------ */
+
+.gameInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  text-align: center;
+  background: transparent;
+}
+
+.gameDeal {
+  margin-top: 3rem;
+  height: 29rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  text-align: center;
+  background: transparent;
+}
+
+.gameBuyButton {
+  /* width: auto; */
+  height: 4rem;
+  margin-top: 3rem;
+}
+
+/* ------------------
+
+   About page 
+   
+   ------------------ */
+
+.version {
+  margin-top: 3rem;
+}
+
+.version p {
+  color: var(--clr-neutral-250);
+  display: inline;
+}
+
+.aboutInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.aboutIcon {
+  margin-bottom: 1rem;
+}
+
+.developerInfo {
+  margin-top: 3rem;
+  width: 100%;
+}
+
+.developerInfo p a {
+  text-decoration: underline;
+}
+
+/* ------------------
+
+   NotFound page 
+   
+   ------------------ */
+
+.notFound {
+  align-items: center;
+}
+
+.notFoundFirstMessage {
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+}
+
+.notFoundSecondMessage {
+  font-size: 2rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .iconScaling {
+    transform: scale(1.5);
+  }
+
+  .homeForm {
+    /* margin-bottom: 5rem; */
+    margin-top: 1rem;
+    width: 80%;
+  }
+
+  .searchbar {
+    height: 4rem;
+    font-size: 1.8rem;
+    background-color: var(--clr-neutral-200);
+    border-radius: 5px 0 0 5px;
+    border: 4px solid var(--clr-neutral-200);
+    border-width: 4px 0px 4px 4px;
+    color: var(--clr-primary-600);
+    padding: 0.25em 1em;
+  }
+
+  .searchbarButton {
+    display: initial;
+    height: 4rem;
+    font-size: 1.8rem;
+    background: transparent;
+    border-radius: 0 5px 5px 0;
+  }
+
+  .gamesList {
+    /* margin-top: 10rem; */
+    margin-top: 5rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .gameItem {
+    font-size: 1.8rem;
+  }
+
+  .randomiseButton {
+    margin-top: 8rem;
+  }
+
+  /* .gameInfo {
+  } */
+
+  .gameDeal {
+    height: 33.5rem;
+  }
+
+  .aboutInfo {
+    align-items: flex-start;
+  }
+
+  .aboutIcon {
+    margin-bottom: 6rem;
+    margin-top: 3rem;
+  }
+
+  .notFoundFirstMessage {
+    font-size: 5rem;
+    margin-bottom: 6rem;
+  }
+
+  .notFoundSecondMessage {
+    font-size: 4rem;
+    margin-top: 6rem;
+  }
+}
+
+/* ==================
+
+   Footer 
+   
+   ================== */
+
+footer {
+  min-height: 4rem;
+  background-color: var(--clr-primary-500);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  color: var(--clr-neutral-200);
+}
+
+@media (min-width: 768px) {
+  footer br {
+    display: none;
+  }
+}
